@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IpsoAbogados | Estudio Jurídico Penalista</title>
+    <title>Acción Penal | Defensa Penal Estratégica</title>
     
     <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +23,11 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0c1f36', /* Azul marino clásico */
-                        primaryLight: '#163154', /* Azul marino más claro */
-                        accent: '#c4a165',  /* Dorado oscuro/bronce */
-                        accentHover: '#a38550',
-                        dark: '#071220',
+                        primary: '#08101a', /* Azul noche oscuro extraído del nuevo logo */
+                        primaryLight: '#142236', /* Azul noche un poco más claro para contrastes */
+                        accent: '#c99738',  /* Dorado vibrante del nuevo logo */
+                        accentHover: '#a87a27',
+                        dark: '#04090e',
                         light: '#fcfcfc'
                     },
                     fontFamily: {
@@ -79,22 +79,26 @@
     <header class="fixed w-full top-0 bg-white shadow-md z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo Texto -->
-                <div class="flex-shrink-0 flex flex-col items-start justify-center">
+                <!-- Logo Texto (Izquierda) -->
+                <div class="flex-shrink-0 w-auto lg:w-1/4 flex flex-col items-start justify-center">
                     <a href="#" class="flex flex-col">
-                        <div class="text-2xl md:text-3xl font-serif font-bold text-primary leading-none">Ipso<span class="text-accent">Abogados</span></div>
-                        <div class="text-[0.65rem] md:text-xs font-sans tracking-[0.2em] uppercase text-gray-500 mt-1">Estudio Jurídico</div>
+                        <div class="text-2xl md:text-3xl font-serif font-bold leading-none"><span class="text-primary">ACCIÓN</span><span class="text-accent ml-2">PENAL</span></div>
+                        <div class="text-[0.65rem] md:text-xs font-sans tracking-[0.2em] uppercase text-gray-500 mt-1">Defensa Penal Estratégica</div>
                     </a>
                 </div>
                 
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-8 items-center">
+                <!-- Desktop Menu (Centro) -->
+                <nav class="hidden md:flex flex-1 justify-center space-x-6 lg:space-x-12 items-center">
                     <a href="#inicio" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Inicio</a>
                     <a href="#servicios" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Servicios</a>
-                    <a href="#metodologia" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Cómo Trabajamos</a>
+                    <a href="#metodologia" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider text-center leading-tight">Cómo<br>Trabajamos</a>
                     <a href="#nosotros" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Testimonios</a>
-                    <a href="#contacto" class="bg-primary text-white px-6 py-2 rounded-sm text-sm font-bold hover:bg-primaryLight transition-colors uppercase tracking-wider">Contacto</a>
                 </nav>
+
+                <!-- Boton Contacto (Derecha) -->
+                <div class="hidden md:flex w-auto lg:w-1/4 justify-end">
+                    <a href="#contacto" class="bg-primary text-white px-8 py-3 rounded-sm text-sm font-bold hover:bg-primaryLight transition-colors uppercase tracking-wider">Contacto</a>
+                </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -236,13 +240,8 @@
                     </div>
                 </div>
                 
-                <div class="lg:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="relative max-w-md w-full flex justify-center">
-                        <!-- Imagen de la Balanza de la Justicia restaurada -->
-                        <img src="image_19bc2a.png" onerror="this.src='https://placehold.co/600x600/0c1f36/c4a165?text=Balanza+Justicia'" alt="Balanza Justicia" class="w-full max-w-[400px] h-auto bg-white p-6 rounded-full shadow-2xl border-4 border-gray-50 transition-transform duration-700 hover:scale-[1.03] object-contain aspect-square">
-                        <div class="absolute -bottom-2 right-4 bg-accent w-20 h-20 rounded-full -z-10 animate-pulse"></div>
-                        <div class="absolute -top-4 -left-4 bg-primaryLight w-28 h-28 rounded-full -z-10 opacity-30"></div>
-                    </div>
+                <div class="lg:w-1/2 flex items-center justify-center mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="1000">
+                    <img src="WhatsApp Image 2026-06-18 at 11.56.28 AM.jpeg" alt="Acción Penal" class="w-full h-auto shadow-2xl border border-[#c99738]/20">
                 </div>
             </div>
         </div>
@@ -366,7 +365,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-2xl md:text-3xl font-serif text-white font-bold mb-6">Confía tu caso a expertos en la materia</h2>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="mailto:contacto@ipsoabogados.cl" class="bg-transparent border border-accent text-accent hover:bg-accent hover:text-white py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
+                    <a href="mailto:contacto@accionpenal.cl" class="bg-transparent border border-accent text-accent hover:bg-accent hover:text-white py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
                         Escríbenos Aquí
                     </a>
                     <a href="https://wa.me/56990848415" class="bg-accent text-white hover:bg-accentHover py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
@@ -382,11 +381,11 @@
                 <!-- Branding -->
                 <div>
                     <div class="mb-6 flex flex-col items-start">
-                        <div class="text-3xl font-serif font-bold text-white leading-none">Ipso<span class="text-accent">Abogados</span></div>
-                        <div class="text-xs font-sans tracking-[0.2em] uppercase text-gray-400 mt-2">Estudio Jurídico</div>
+                        <div class="text-3xl font-serif font-bold leading-none"><span class="text-white">ACCIÓN</span><span class="text-accent ml-2">PENAL</span></div>
+                        <div class="text-xs font-sans tracking-[0.2em] uppercase text-gray-400 mt-2">Defensa Penal Estratégica</div>
                     </div>
                     <p class="text-sm text-gray-400 leading-relaxed mb-6">
-                        Defensa y asesoría penal en delitos de alta gravedad y complejidad. Compromiso absoluto con tu libertad, dignidad y derechos constitucionales.
+                        Defensa y asesoría penal en delitos de alta gravedad y complejidad. Compromiso absoluto con tu libertad, dignidad y derechos constitucionales. Fundado por Joaquim Argento.
                     </p>
                 </div>
 
@@ -416,14 +415,14 @@
                             <i class="fa-solid fa-envelope text-accent mt-1"></i>
                             <div>
                                 <span class="block text-white font-semibold">Correo Electrónico:</span>
-                                <a href="mailto:contacto@ipsoabogados.cl" class="hover:text-white">contacto@ipsoabogados.cl</a>
+                                <a href="mailto:contacto@accionpenal.cl" class="hover:text-white">joaquim.argento@accionpenal.cl</a>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot text-accent mt-1"></i>
                             <div>
                                 <span class="block text-white font-semibold">Oficina Central:</span>
-                                <span>Compañía de Jesus, Santiago Centro, RM.</span>
+                                <a href="https://www.google.com/maps/dir//Catedral+1009,+Edificio+Plaza+de+Armas,+Santiago,+Regi%C3%B3n+Metropolitana,+Chile/@-33.4371927,-70.6523927,363m/data=!3m1!1e3!4m18!1m8!3m7!1s0x9662c5a49d56ce81:0x204ea1f0820d4f77!2sCatedral+1009,+Edificio+Plaza+de+Armas,+Santiago,+Regi%C3%B3n+Metropolitana,+Chile!3b1!8m2!3d-33.4371927!4d-70.6515362!16s%2Fg%2F11n3_yz9gx!4m8!1m0!1m5!1m1!1s0x9662c5a49d56ce81:0x204ea1f0820d4f77!2m2!1d-70.6515362!2d-33.4371927!3e0?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Catedral 1009, oficina 501</a>
                             </div>
                         </li>
                     </ul>
@@ -433,7 +432,7 @@
 
         <!-- Copyright -->
         <div class="bg-dark py-6 text-center text-sm border-t border-gray-800">
-            <p>&copy; 2026 IpsoAbogados. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Acción Penal. Todos los derechos reservados.</p>
         </div>
     </footer>
 
