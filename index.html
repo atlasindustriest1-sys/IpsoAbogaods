@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Defensa Penal Estratégica. Alta complejidad penal en todo Chile. Compromiso con tu libertad y derechos.">
     <title>Acción Penal | Defensa Penal Estratégica</title>
     
     <!-- Fuentes de Google -->
@@ -10,22 +11,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Librería de Animaciones AOS (Animate On Scroll) -->
+    <!-- Librería de Animaciones AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Tailwind CSS (Framework Moderno de Diseño) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#08101a', /* Azul noche oscuro extraído del nuevo logo */
-                        primaryLight: '#142236', /* Azul noche un poco más claro para contrastes */
-                        accent: '#c99738',  /* Dorado vibrante del nuevo logo */
+                        primary: '#08101a',
+                        primaryLight: '#142236',
+                        accent: '#c99738',
                         accentHover: '#a87a27',
                         dark: '#04090e',
                         light: '#fcfcfc'
@@ -40,13 +41,11 @@
     </script>
     
     <style>
-        /* Ajustes de la imagen hero de fondo (Familia en la naturaleza) */
         .hero-bg {
             background: linear-gradient(rgba(12, 31, 54, 0.65), rgba(12, 31, 54, 0.8)), 
                         url('https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
         }
         
-        /* Efecto de latido continuo para WhatsApp */
         @keyframes pulse-ring {
             0% { transform: scale(0.85); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -60,26 +59,38 @@
         }
         .whatsapp-btn:hover {
             transform: scale(1.1) translateY(-5px);
-            animation: none; /* Detiene el latido al poner el mouse encima */
+            animation: none;
         }
 
-        /* Ocultar scrollbar en el slider de testimonios pero mantener funcionalidad */
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
         .hide-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Estilos para el menú móvil suave */
+        #mobileMenu {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        #mobileMenu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        #mobileMenu.inactive {
+            opacity: 0;
+            visibility: hidden;
         }
     </style>
 </head>
 <body class="font-sans text-gray-700 bg-light antialiased">
 
     <!-- Header / Navbar -->
-    <header class="fixed w-full top-0 bg-white shadow-md z-50 transition-all duration-300">
+    <header class="fixed w-full top-0 bg-white shadow-md z-50 transition-all duration-300" id="mainHeader">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo Texto (Izquierda) -->
+            <div class="flex justify-between items-center h-20 transition-all duration-300" id="headerNav">
+                <!-- Logo Texto -->
                 <div class="flex-shrink-0 w-auto lg:w-1/4 flex flex-col items-start justify-center">
                     <a href="#" class="flex flex-col">
                         <div class="text-2xl md:text-3xl font-serif font-bold leading-none"><span class="text-primary">ACCIÓN</span><span class="text-accent ml-2">PENAL</span></div>
@@ -87,7 +98,7 @@
                     </a>
                 </div>
                 
-                <!-- Desktop Menu (Centro) -->
+                <!-- Desktop Menu -->
                 <nav class="hidden md:flex flex-1 justify-center space-x-6 lg:space-x-12 items-center">
                     <a href="#inicio" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Inicio</a>
                     <a href="#servicios" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Servicios</a>
@@ -95,20 +106,32 @@
                     <a href="#nosotros" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Testimonios</a>
                 </nav>
 
-                <!-- Boton Contacto (Derecha) -->
+                <!-- Boton Contacto Desktop -->
                 <div class="hidden md:flex w-auto lg:w-1/4 justify-end">
                     <a href="#contacto" class="bg-primary text-white px-8 py-3 rounded-sm text-sm font-bold hover:bg-primaryLight transition-colors uppercase tracking-wider">Contacto</a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button class="text-primary hover:text-accent focus:outline-none">
+                    <button id="openMenuBtn" class="text-primary hover:text-accent focus:outline-none p-2" aria-label="Abrir menú">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="inactive fixed inset-0 bg-primary/95 backdrop-blur-md z-[100] flex-col justify-center items-center space-y-8 flex">
+        <button id="closeMenuBtn" class="absolute top-6 right-6 text-white hover:text-accent p-2" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark text-4xl"></i>
+        </button>
+        <a href="#inicio" class="mobile-link text-2xl font-serif font-bold text-white hover:text-accent transition-colors uppercase tracking-wider">Inicio</a>
+        <a href="#servicios" class="mobile-link text-2xl font-serif font-bold text-white hover:text-accent transition-colors uppercase tracking-wider">Servicios</a>
+        <a href="#metodologia" class="mobile-link text-2xl font-serif font-bold text-white hover:text-accent transition-colors uppercase tracking-wider text-center">Cómo Trabajamos</a>
+        <a href="#nosotros" class="mobile-link text-2xl font-serif font-bold text-white hover:text-accent transition-colors uppercase tracking-wider">Testimonios</a>
+        <button onclick="abrirModalConsulta(); toggleMenu();" class="mobile-link mt-8 bg-accent text-white px-10 py-4 rounded-sm text-xl font-bold hover:bg-accentHover transition-colors uppercase tracking-wider">Contacto</button>
+    </div>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero-bg min-h-[85vh] flex items-start pt-32 md:pt-40 pb-20 overflow-hidden">
@@ -121,11 +144,11 @@
                 En los momentos más difíciles, necesitas un equipo que te escuche, te respalde y actúe con determinación. Ofrecemos atención inmediata, confidencial y sin juicios.
             </p>
             
-            <!-- Botones Rectangulares y Separados -->
             <div data-aos="zoom-in" data-aos-duration="800" data-aos-delay="600" class="flex flex-col sm:flex-row gap-6 justify-center w-full">
-                <a href="https://wa.me/56990848415" class="bg-accent border-2 border-accent text-white font-bold py-4 px-8 uppercase tracking-wider transition-all duration-300 hover:bg-accentHover hover:border-accentHover flex items-center justify-center min-w-[280px]">
+                <!-- BOTÓN MODIFICADO PARA ABRIR MODAL -->
+                <button onclick="abrirModalConsulta()" class="bg-accent border-2 border-accent text-white font-bold py-4 px-8 uppercase tracking-wider transition-all duration-300 hover:bg-accentHover hover:border-accentHover flex items-center justify-center min-w-[280px]">
                     Agendar Consulta Confidencial
-                </a>
+                </button>
                 <a href="tel:+56990848415" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-bold py-4 px-8 uppercase tracking-wider transition-all duration-300 flex items-center justify-center min-w-[280px]">
                     <i class="fa-solid fa-phone mr-2"></i> Llamar Urgencias 24/7
                 </a>
@@ -133,7 +156,7 @@
         </div>
     </section>
 
-    <!-- ¿Por qué elegirnos? (Stats Ribbon) -->
+    <!-- ¿Por qué elegirnos? -->
     <section class="bg-primary border-t-4 border-accent py-12 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
@@ -241,7 +264,8 @@
                 </div>
                 
                 <div class="lg:w-1/2 flex items-center justify-center mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="1000">
-                    <img src="WhatsApp Image 2026-06-18 at 11.56.28 AM.jpeg" alt="Acción Penal" class="w-full h-auto shadow-2xl border border-[#c99738]/20">
+                    <!-- Imagen representativa -->
+                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Metodología Acción Penal" class="w-full h-auto shadow-2xl border border-[#c99738]/20 rounded-sm">
                 </div>
             </div>
         </div>
@@ -259,21 +283,16 @@
                 <div class="w-20 h-1 bg-accent mx-auto mt-2"></div>
             </div>
 
-            <!-- Contenedor del Carrusel -->
             <div class="relative px-2 sm:px-12 group" data-aos="fade-up" data-aos-delay="100">
-                
-                <!-- Flecha Izquierda -->
                 <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:text-accent hover:scale-110 transition-all duration-300 z-10 focus:outline-none opacity-90 hover:opacity-100 hidden sm:flex">
                     <i class="fa-solid fa-chevron-left text-xl"></i>
                 </button>
 
-                <!-- Pista de Testimonios (Slider) -->
                 <div id="testimonialTrack" class="flex overflow-x-auto gap-6 snap-x snap-mandatory hide-scrollbar pb-10 pt-4 scroll-smooth">
                     
-                    <!-- Tarjeta 1 -->
                     <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
                         <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo Hernández es un abogado de excelencia. Actúa con ética profesional y un profundo conocimiento de las leyes. Es hábil comunicacionalmente. Y lo más importante, es una persona empática, capaz de ponerse en el lugar del cliente y entender sus requerimientos y necesidades para brindar soluciones efectivas. Lo recomiendo a ojos cerrados. No se van a arrepentir."</p>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo Hernández es un abogado de excelencia. Actúa con ética profesional y un profundo conocimiento de las leyes. Es hábil comunicacionalmente... Lo recomiendo a ojos cerrados."</p>
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">P</div>
                             <div>
@@ -283,10 +302,9 @@
                         </div>
                     </div>
 
-                    <!-- Tarjeta 2 -->
                     <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
                         <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo muy atento a todo, es difícil confiar en una persona estando a distancia pero me entrego la seguridad en sus procesos, llevamos varios meses trabajando juntos y lo recomendaría siempre, consulta o inquietud que tuviese lo volvería a contactar."</p>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo muy atento a todo, es difícil confiar en una persona estando a distancia pero me entrego la seguridad en sus procesos, llevamos varios meses trabajando juntos..."</p>
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">S</div>
                             <div>
@@ -296,10 +314,9 @@
                         </div>
                     </div>
 
-                    <!-- Tarjeta 3 -->
                     <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
                         <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Servicio 100% recomendable. El abogado Guillermo Hernandez ha demostrado compromiso y dedicación en nuestro caso en todo momento, evidenciando ser un gran profesional. Mi experiencia hasta el momento ha sido excelente."</p>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Servicio 100% recomendable. El abogado Guillermo Hernandez ha demostrado compromiso y dedicación en nuestro caso en todo momento, evidenciando ser un gran profesional."</p>
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">A</div>
                             <div>
@@ -308,49 +325,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Tarjeta 4 -->
-                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
-                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Muy buen abogado, rápido y proactivo, muy dedicado y atento a mis necesidades, muy bueno."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">A</div>
-                            <div>
-                                <h4 class="font-bold text-primary">Alejandro Pérez</h4>
-                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 5 -->
-                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
-                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo me contactó rápidamente y aclaro mis dudas."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">R</div>
-                            <div>
-                                <h4 class="font-bold text-primary">Ricardo Muñoz</h4>
-                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 6 -->
-                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
-                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Excelente abogado.. muy respeto.. muy empatizo.. mil gracias"</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">F</div>
-                            <div>
-                                <h4 class="font-bold text-primary">Fabiana Cortés Venegas</h4>
-                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- Flecha Derecha -->
                 <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:text-accent hover:scale-110 transition-all duration-300 z-10 focus:outline-none opacity-90 hover:opacity-100 hidden sm:flex">
                     <i class="fa-solid fa-chevron-right text-xl"></i>
                 </button>
@@ -360,7 +336,6 @@
 
     <!-- Footer CTA & Footer -->
     <footer id="contacto" class="bg-primary text-gray-300">
-        <!-- CTA Principal Footer -->
         <div class="bg-primaryLight py-12 border-b border-gray-700">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-2xl md:text-3xl font-serif text-white font-bold mb-6">Confía tu caso a expertos en la materia</h2>
@@ -368,17 +343,16 @@
                     <a href="mailto:contacto@accionpenal.cl" class="bg-transparent border border-accent text-accent hover:bg-accent hover:text-white py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
                         Escríbenos Aquí
                     </a>
-                    <a href="https://wa.me/56990848415" class="bg-accent text-white hover:bg-accentHover py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
+                    <!-- BOTÓN MODIFICADO EN EL FOOTER -->
+                    <button onclick="abrirModalConsulta()" class="bg-accent text-white hover:bg-accentHover py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
                         Agendar Consulta
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Info Footer -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Branding -->
                 <div>
                     <div class="mb-6 flex flex-col items-start">
                         <div class="text-3xl font-serif font-bold leading-none"><span class="text-white">ACCIÓN</span><span class="text-accent ml-2">PENAL</span></div>
@@ -389,7 +363,6 @@
                     </p>
                 </div>
 
-                <!-- Enlaces -->
                 <div>
                     <h4 class="text-white font-bold text-lg mb-6 border-b border-gray-700 pb-2 inline-block">Navegación</h4>
                     <ul class="space-y-3">
@@ -400,7 +373,6 @@
                     </ul>
                 </div>
 
-                <!-- Contacto -->
                 <div>
                     <h4 class="text-white font-bold text-lg mb-6 border-b border-gray-700 pb-2 inline-block">Contacto Directo</h4>
                     <ul class="space-y-4">
@@ -422,7 +394,7 @@
                             <i class="fa-solid fa-location-dot text-accent mt-1"></i>
                             <div>
                                 <span class="block text-white font-semibold">Oficina Central:</span>
-                                <a href="https://www.google.com/maps/dir//Catedral+1009,+Edificio+Plaza+de+Armas,+Santiago,+Regi%C3%B3n+Metropolitana,+Chile/@-33.4371927,-70.6523927,363m/data=!3m1!1e3!4m18!1m8!3m7!1s0x9662c5a49d56ce81:0x204ea1f0820d4f77!2sCatedral+1009,+Edificio+Plaza+de+Armas,+Santiago,+Regi%C3%B3n+Metropolitana,+Chile!3b1!8m2!3d-33.4371927!4d-70.6515362!16s%2Fg%2F11n3_yz9gx!4m8!1m0!1m5!1m1!1s0x9662c5a49d56ce81:0x204ea1f0820d4f77!2m2!1d-70.6515362!2d-33.4371927!3e0?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Catedral 1009, oficina 501</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Catedral 1009, oficina 501</a>
                             </div>
                         </li>
                     </ul>
@@ -430,7 +402,6 @@
             </div>
         </div>
 
-        <!-- Copyright -->
         <div class="bg-dark py-6 text-center text-sm border-t border-gray-800">
             <p>&copy; 2026 Acción Penal. Todos los derechos reservados.</p>
         </div>
@@ -438,61 +409,66 @@
 
     <!-- Botón Flotante WhatsApp -->
     <a href="https://wa.me/56990848415" target="_blank" aria-label="Chat en WhatsApp" 
-       class="whatsapp-btn fixed bottom-8 right-8 bg-[#25d366] text-white w-16 h-16 rounded-full flex justify-center items-center text-3xl z-[100]">
+       class="whatsapp-btn fixed bottom-8 right-8 bg-[#25d366] text-white w-16 h-16 rounded-full flex justify-center items-center text-3xl z-[90]">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- Scripts de Animación y Navegación -->
+    <!-- ================= MODAL DE FORMULARIO DE CONSULTA ================= -->
+    <div id="modalConsulta" class="fixed inset-0 bg-primary/90 backdrop-blur-sm z-[200] hidden items-center justify-center opacity-0 transition-opacity duration-300">
+        <div id="modalContent" class="bg-white w-full max-w-lg mx-4 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 relative overflow-hidden">
+            <!-- Cabecera del Modal -->
+            <div class="bg-primary p-6 text-center relative">
+                <button onclick="cerrarModalConsulta()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+                <h3 class="text-2xl font-serif font-bold text-white mb-1">Agendar Consulta</h3>
+                <p class="text-gray-300 text-sm">Información 100% confidencial</p>
+            </div>
+            
+            <!-- Cuerpo del Formulario -->
+            <div class="p-8">
+                <form id="formConsulta" class="space-y-5">
+                    <div>
+                        <label for="nombreForm" class="block text-sm font-bold text-primary mb-1">Nombre Completo *</label>
+                        <input type="text" id="nombreForm" required class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all" placeholder="Ej. Juan Pérez">
+                    </div>
+                    
+                    <div>
+                        <label for="telefonoForm" class="block text-sm font-bold text-primary mb-1">Teléfono de Contacto *</label>
+                        <input type="tel" id="telefonoForm" required class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all" placeholder="+56 9 1234 5678">
+                    </div>
+
+                    <div>
+                        <label for="tipoCasoForm" class="block text-sm font-bold text-primary mb-1">Tipo de Caso *</label>
+                        <select id="tipoCasoForm" required class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all bg-white">
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Delitos Sexuales / Violentos">Delitos Sexuales / Violentos</option>
+                            <option value="Homicidios / Ley de Drogas">Homicidios / Ley de Drogas (20.000)</option>
+                            <option value="Delitos Económicos">Delitos Económicos</option>
+                            <option value="Control de Detención (Urgencia)">Control de Detención (Urgencia)</option>
+                            <option value="Otro">Otro caso penal</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mensajeForm" class="block text-sm font-bold text-primary mb-1">Breve descripción de los hechos (Opcional)</label>
+                        <textarea id="mensajeForm" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all resize-none" placeholder="No comparta detalles sensibles aquí, solo una idea general."></textarea>
+                    </div>
+
+                    <!-- Botón de Envío Modificado para Email Directo -->
+                    <button id="btnEnviarEmail" type="submit" class="w-full bg-accent text-white font-bold py-4 rounded-sm uppercase tracking-wider hover:bg-accentHover transition-colors shadow-lg flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-xl"></i> Enviar Consulta al Abogado
+                    </button>
+                    <p class="text-xs text-center text-gray-500 mt-4"><i class="fa-solid fa-lock mr-1"></i> Protegido por Secreto Profesional</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ================= FIN MODAL ================= -->
+
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Lógica para el Slider de Testimonios
-        const track = document.getElementById('testimonialTrack');
-        const prevBtn = document.getElementById('prevTestimonial');
-        const nextBtn = document.getElementById('nextTestimonial');
-
-        if (track && prevBtn && nextBtn) {
-            // Avanzar hacia la derecha con bucle
-            nextBtn.addEventListener('click', () => {
-                const cardWidth = track.querySelector('div').offsetWidth + 24; // ancho de tarjeta + gap
-                const maxScroll = track.scrollWidth - track.clientWidth;
-                
-                // Si llegó al final, deslizar de vuelta al inicio
-                if (track.scrollLeft >= maxScroll - 10) {
-                    track.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    track.scrollBy({ left: cardWidth, behavior: 'smooth' });
-                }
-            });
-
-            // Retroceder hacia la izquierda con bucle
-            prevBtn.addEventListener('click', () => {
-                const cardWidth = track.querySelector('div').offsetWidth + 24;
-                
-                // Si está en el inicio, deslizar hasta el final
-                if (track.scrollLeft <= 10) {
-                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
-                } else {
-                    track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-                }
-            });
-
-            // Avance automático (Autoplay) cada 4.5 segundos
-            let autoPlayInterval = setInterval(() => {
-                nextBtn.click();
-            }, 4500);
-
-            // Pausar el slider si el usuario pone el mouse encima o lo toca en el celular
-            track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-            track.addEventListener('touchstart', () => clearInterval(autoPlayInterval), {passive: true});
-            
-            // Reanudar el slider cuando el usuario quita el mouse
-            track.addEventListener('mouseleave', () => {
-                autoPlayInterval = setInterval(() => {
-                    nextBtn.click();
-                }, 4500);
-            });
-        }
-
         // Inicializar animaciones de Scroll (AOS)
         AOS.init({
             once: true,
@@ -500,14 +476,180 @@
             duration: 800,
             easing: 'ease-out-cubic',
         });
-        
-        // Efecto del menú al bajar (Header Shrink)
+
+        // 1. LÓGICA DEL MENÚ MÓVIL
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('inactive')) {
+                mobileMenu.classList.remove('inactive');
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evita scrollear el fondo
+            } else {
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('inactive');
+                document.body.style.overflow = 'auto'; // Devuelve el scroll
+            }
+        }
+
+        openMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        // Cerrar menú al hacer clic en un enlace
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // 2. EFECTO DEL HEADER AL HACER SCROLL
         window.addEventListener('scroll', function() {
-            const headerNav = document.querySelector('header .flex.justify-between');
+            const headerNav = document.getElementById('headerNav');
             if (window.scrollY > 50) {
                 headerNav.classList.replace('h-20', 'h-16'); 
             } else {
                 headerNav.classList.replace('h-16', 'h-20');
+            }
+        });
+
+        // 3. LÓGICA PARA EL SLIDER DE TESTIMONIOS
+        const track = document.getElementById('testimonialTrack');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+
+        if (track && prevBtn && nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const cardWidth = track.querySelector('div').offsetWidth + 24; 
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                if (track.scrollLeft >= maxScroll - 10) {
+                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                const cardWidth = track.querySelector('div').offsetWidth + 24;
+                if (track.scrollLeft <= 10) {
+                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                }
+            });
+
+            let autoPlayInterval = setInterval(() => { nextBtn.click(); }, 4500);
+
+            track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            track.addEventListener('touchstart', () => clearInterval(autoPlayInterval), {passive: true});
+            
+            track.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => { nextBtn.click(); }, 4500);
+            });
+        }
+
+        // 4. LÓGICA DEL FORMULARIO Y MODAL DE CONSULTA (LA AUTOMATIZACIÓN)
+        const modalConsulta = document.getElementById('modalConsulta');
+        const modalContent = document.getElementById('modalContent');
+        const formConsulta = document.getElementById('formConsulta');
+
+        function abrirModalConsulta() {
+            modalConsulta.classList.remove('hidden');
+            modalConsulta.classList.add('flex');
+            
+            // Pequeño timeout para permitir que la animación de entrada se vea
+            setTimeout(() => {
+                modalConsulta.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden'; // Bloquear scroll de la página detrás del modal
+        }
+
+        function cerrarModalConsulta() {
+            modalConsulta.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            // Esperar que termine la animación antes de ocultarlo
+            setTimeout(() => {
+                modalConsulta.classList.add('hidden');
+                modalConsulta.classList.remove('flex');
+            }, 300); 
+            
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        // Cerrar modal al hacer click en el fondo oscuro
+        modalConsulta.addEventListener('click', (e) => {
+            if (e.target === modalConsulta) {
+                cerrarModalConsulta();
+            }
+        });
+
+        // Evento que se dispara al enviar el formulario (Envío directo por Email en segundo plano)
+        formConsulta.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evita que la página recargue
+
+            // 1. Obtener valores que el usuario escribió
+            const nombre = document.getElementById('nombreForm').value;
+            const telefono = document.getElementById('telefonoForm').value;
+            const tipoCaso = document.getElementById('tipoCasoForm').value;
+            const mensaje = document.getElementById('mensajeForm').value;
+            
+            const btnEnviar = document.getElementById('btnEnviarEmail');
+            const textoOriginalBtn = btnEnviar.innerHTML;
+
+            // 2. Cambiar botón a estado de "Enviando..."
+            btnEnviar.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-xl"></i> Enviando Información...';
+            btnEnviar.disabled = true;
+            btnEnviar.classList.add('opacity-75', 'cursor-not-allowed');
+
+            // 3. Preparar los datos y enviarlos silenciosamente vía FormSubmit
+            const correoAbogado = "joaquim.argento@gmail.com"; // <- DEBES PONER EL CORREO REAL AQUÍ
+            
+            try {
+                const response = await fetch(`https://formsubmit.co/ajax/${correoAbogado}`, {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _subject: "NUEVA CONSULTA URGENTE WEB - " + tipoCaso,
+                        Nombre: nombre,
+                        Teléfono: telefono,
+                        "Tipo de Caso": tipoCaso,
+                        Mensaje: mensaje || "Sin mensaje adicional."
+                    })
+                });
+
+                if (response.ok) {
+                    // 4. Mostrar mensaje de éxito en pantalla
+                    const contenedorFormulario = document.getElementById('formConsulta').parentElement;
+                    contenedorFormulario.innerHTML = `
+                        <div class="text-center py-8 transform transition-all duration-500">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                                <i class="fa-solid fa-check text-4xl text-green-500"></i>
+                            </div>
+                            <h4 class="text-2xl font-serif font-bold text-primary mb-2">¡Información Enviada!</h4>
+                            <p class="text-gray-600 mb-8 px-4 text-sm leading-relaxed">El abogado ha recibido tus datos de forma segura y confidencial. Se pondrá en contacto contigo a la brevedad al número proporcionado.</p>
+                            <button onclick="cerrarModalConsulta()" class="bg-primary text-white font-bold py-3 px-10 rounded-sm hover:bg-primaryLight transition-colors uppercase tracking-wider shadow-md">
+                                Entendido
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Error del servidor al procesar el correo');
+                }
+            } catch (error) {
+                console.error("Error al enviar:", error);
+                alert("Hubo un problema de conexión. Por favor, intenta de nuevo o llámanos directamente por teléfono.");
+                // Si falla, restauramos el botón a la normalidad
+                btnEnviar.innerHTML = textoOriginalBtn;
+                btnEnviar.disabled = false;
+                btnEnviar.classList.remove('opacity-75', 'cursor-not-allowed');
             }
         });
     </script>
