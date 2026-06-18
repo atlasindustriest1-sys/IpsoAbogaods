@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IpsoAbogados | Estudio Jurídico Penalista</title>
+    
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Librería de Animaciones AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (Framework Moderno de Diseño) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0c1f36', /* Azul marino clásico */
+                        primaryLight: '#163154', /* Azul marino más claro */
+                        accent: '#c4a165',  /* Dorado oscuro/bronce */
+                        accentHover: '#a38550',
+                        dark: '#071220',
+                        light: '#fcfcfc'
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Ajustes de la imagen hero de fondo (Familia en la naturaleza) */
+        .hero-bg {
+            background: linear-gradient(rgba(12, 31, 54, 0.65), rgba(12, 31, 54, 0.8)), 
+                        url('https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        
+        /* Efecto de latido continuo para WhatsApp */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.85); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.85); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        .whatsapp-btn {
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse-ring 2s infinite;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            animation: none; /* Detiene el latido al poner el mouse encima */
+        }
+
+        /* Ocultar scrollbar en el slider de testimonios pero mantener funcionalidad */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-light antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 bg-white shadow-md z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Texto -->
+                <div class="flex-shrink-0 flex flex-col items-start justify-center">
+                    <a href="#" class="flex flex-col">
+                        <div class="text-2xl md:text-3xl font-serif font-bold text-primary leading-none">Ipso<span class="text-accent">Abogados</span></div>
+                        <div class="text-[0.65rem] md:text-xs font-sans tracking-[0.2em] uppercase text-gray-500 mt-1">Estudio Jurídico</div>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Inicio</a>
+                    <a href="#servicios" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Servicios</a>
+                    <a href="#metodologia" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Cómo Trabajamos</a>
+                    <a href="#nosotros" class="text-sm font-bold text-gray-800 hover:text-accent transition-colors uppercase tracking-wider">Testimonios</a>
+                    <a href="#contacto" class="bg-primary text-white px-6 py-2 rounded-sm text-sm font-bold hover:bg-primaryLight transition-colors uppercase tracking-wider">Contacto</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-primary hover:text-accent focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-[85vh] flex items-start pt-32 md:pt-40 pb-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left flex flex-col items-center text-center">
+            <span data-aos="fade-down" data-aos-duration="800" class="text-accent font-bold tracking-[0.2em] uppercase mb-4 block text-sm">Defensa Penal Especializada en Todo Chile</span>
+            <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="text-4xl md:text-6xl font-serif font-bold text-white leading-tight mb-6 max-w-4xl">
+                Estamos Contigo. <br/> <span class="text-accent">Tu problema jurídico tiene Solución.</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="text-lg md:text-xl text-gray-200 mb-14 max-w-3xl font-light">
+                En los momentos más difíciles, necesitas un equipo que te escuche, te respalde y actúe con determinación. Ofrecemos atención inmediata, confidencial y sin juicios.
+            </p>
+            
+            <!-- Botones Rectangulares y Separados -->
+            <div data-aos="zoom-in" data-aos-duration="800" data-aos-delay="600" class="flex flex-col sm:flex-row gap-6 justify-center w-full">
+                <a href="https://wa.me/56990848415" class="bg-accent border-2 border-accent text-white font-bold py-4 px-8 uppercase tracking-wider transition-all duration-300 hover:bg-accentHover hover:border-accentHover flex items-center justify-center min-w-[280px]">
+                    Agendar Consulta Confidencial
+                </a>
+                <a href="tel:+56990848415" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-bold py-4 px-8 uppercase tracking-wider transition-all duration-300 flex items-center justify-center min-w-[280px]">
+                    <i class="fa-solid fa-phone mr-2"></i> Llamar Urgencias 24/7
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Por qué elegirnos? (Stats Ribbon) -->
+    <section class="bg-primary border-t-4 border-accent py-12 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
+                <div class="p-4" data-aos="fade-up" data-aos-delay="0">
+                    <i class="fa-solid fa-scale-unbalanced text-3xl text-accent mb-3 transform transition-transform hover:scale-125 duration-300"></i>
+                    <h3 class="text-white font-bold text-lg mb-1">Líderes en Defensa</h3>
+                    <p class="text-gray-400 text-sm">Alta complejidad penal</p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-users text-3xl text-accent mb-3 transform transition-transform hover:scale-125 duration-300"></i>
+                    <h3 class="text-white font-bold text-lg mb-1">Equipo de Excelencia</h3>
+                    <p class="text-gray-400 text-sm">Alta especialización</p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-gavel text-3xl text-accent mb-3 transform transition-transform hover:-rotate-12 duration-300"></i>
+                    <h3 class="text-white font-bold text-lg mb-1">Amplia Experiencia</h3>
+                    <p class="text-gray-400 text-sm">En tribunales de todo el país</p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-chart-line text-3xl text-accent mb-3 transform transition-transform hover:-translate-y-2 duration-300"></i>
+                    <h3 class="text-white font-bold text-lg mb-1">Resultados Reales</h3>
+                    <p class="text-gray-400 text-sm">Estrategia sólida y comprobada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de Práctica -->
+    <section id="servicios" class="py-20 bg-light overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-primary mb-4">Áreas de Especialización</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Defendemos tu libertad con ciencia, convicción y rigor jurídico. Conoce nuestras principales áreas de práctica penal.</p>
+                <div class="w-20 h-1 bg-accent mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-white p-10 shadow-sm border border-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl group border-b-4 border-b-transparent hover:border-b-accent">
+                    <div class="w-14 h-14 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500">
+                        <i class="fa-solid fa-shield-halved text-2xl text-primary group-hover:text-accent transition-all duration-500 group-hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3 font-serif">Delitos Sexuales y Violentos</h3>
+                    <p class="text-gray-600 leading-relaxed">Defensa especializada en acusaciones de abuso, violación y estupro. Actuamos con total discreción, analizando peritajes psicológicos y evidencia técnica para construir una defensa sólida.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-10 shadow-sm border border-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl group border-b-4 border-b-transparent hover:border-b-accent">
+                    <div class="w-14 h-14 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500">
+                        <i class="fa-solid fa-handcuffs text-2xl text-primary group-hover:text-accent transition-all duration-500 group-hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3 font-serif">Homicidios y Delitos contra las Personas</h3>
+                    <p class="text-gray-600 leading-relaxed">Asesoría de alta complejidad en casos de homicidio, lesiones graves y secuestro. Reconstruimos los hechos con rigor criminalístico para proteger tus derechos fundamentales.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-white p-10 shadow-sm border border-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl group border-b-4 border-b-transparent hover:border-b-accent">
+                    <div class="w-14 h-14 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500">
+                        <i class="fa-solid fa-building-columns text-2xl text-primary group-hover:text-accent transition-all duration-500 group-hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3 font-serif">Delitos Económicos (Ley de Cuello Blanco)</h3>
+                    <p class="text-gray-600 leading-relaxed">Defensa corporativa e individual ante fraudes, estafas, apropiación indebida y delitos tributarios. Protegemos tu patrimonio y reputación profesional.</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white p-10 shadow-sm border border-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl group border-b-4 border-b-transparent hover:border-b-accent">
+                    <div class="w-14 h-14 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500">
+                        <i class="fa-solid fa-capsules text-2xl text-primary group-hover:text-accent transition-all duration-500 group-hover:scale-110"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3 font-serif">Ley 20.000 (Drogas)</h3>
+                    <p class="text-gray-600 leading-relaxed">Asesoría penal estratégica frente a imputaciones por tráfico, microtráfico y cultivo. Cuestionamos la legalidad de los procedimientos y allanamientos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Cómo trabajamos? -->
+    <section id="metodologia" class="py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+                    <span class="text-accent font-bold tracking-widest uppercase mb-2 block">Nuestra Metodología</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-6">¿Cómo trabajamos tu defensa?</h2>
+                    <p class="text-gray-600 mb-8 text-lg">Entendemos la angustia de enfrentar un proceso penal. Nuestro protocolo de trabajo está diseñado para darte certezas desde el minuto cero.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-4 group cursor-pointer">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-accent rounded-full flex items-center justify-center font-serif text-2xl font-bold shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-white">1</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-2 transition-colors duration-300 group-hover:text-accent">Consulta inicial gratuita y confidencial</h4>
+                                <p class="text-gray-600">Escuchamos tu versión de los hechos bajo estricto secreto profesional. Analizamos la urgencia (detenciones, formalizaciones).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 group cursor-pointer">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-accent rounded-full flex items-center justify-center font-serif text-2xl font-bold shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-white">2</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-2 transition-colors duration-300 group-hover:text-accent">Evaluación jurídica y estrategia</h4>
+                                <p class="text-gray-600">Estudiamos la carpeta investigativa al detalle y diseñamos un plan de defensa claro, explicándote las opciones legales reales.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 group cursor-pointer">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-accent rounded-full flex items-center justify-center font-serif text-2xl font-bold shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-white">3</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-2 transition-colors duration-300 group-hover:text-accent">Defensa firme en Tribunales</h4>
+                                <p class="text-gray-600">Litigamos con agresividad técnica y convicción ante el Ministerio Público y los Juzgados de Garantía, protegiendo tu libertad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative max-w-md w-full flex justify-center">
+                        <!-- Imagen de la Balanza de la Justicia restaurada -->
+                        <img src="image_19bc2a.png" onerror="this.src='https://placehold.co/600x600/0c1f36/c4a165?text=Balanza+Justicia'" alt="Balanza Justicia" class="w-full max-w-[400px] h-auto bg-white p-6 rounded-full shadow-2xl border-4 border-gray-50 transition-transform duration-700 hover:scale-[1.03] object-contain aspect-square">
+                        <div class="absolute -bottom-2 right-4 bg-accent w-20 h-20 rounded-full -z-10 animate-pulse"></div>
+                        <div class="absolute -top-4 -left-4 bg-primaryLight w-28 h-28 rounded-full -z-10 opacity-30"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="nosotros" class="py-20 bg-gray-50 border-t border-gray-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="zoom-in">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-primary mb-4">Lo que dicen quienes confiaron</h2>
+                <div class="flex justify-center items-center gap-2 mb-4">
+                    <i class="fa-solid fa-star text-accent"></i><i class="fa-solid fa-star text-accent"></i><i class="fa-solid fa-star text-accent"></i><i class="fa-solid fa-star text-accent"></i><i class="fa-solid fa-star text-accent"></i>
+                    <span class="font-bold text-primary ml-2">5.0 / 5.0 Excelencia</span>
+                </div>
+                <div class="w-20 h-1 bg-accent mx-auto mt-2"></div>
+            </div>
+
+            <!-- Contenedor del Carrusel -->
+            <div class="relative px-2 sm:px-12 group" data-aos="fade-up" data-aos-delay="100">
+                
+                <!-- Flecha Izquierda -->
+                <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:text-accent hover:scale-110 transition-all duration-300 z-10 focus:outline-none opacity-90 hover:opacity-100 hidden sm:flex">
+                    <i class="fa-solid fa-chevron-left text-xl"></i>
+                </button>
+
+                <!-- Pista de Testimonios (Slider) -->
+                <div id="testimonialTrack" class="flex overflow-x-auto gap-6 snap-x snap-mandatory hide-scrollbar pb-10 pt-4 scroll-smooth">
+                    
+                    <!-- Tarjeta 1 -->
+                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
+                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo Hernández es un abogado de excelencia. Actúa con ética profesional y un profundo conocimiento de las leyes. Es hábil comunicacionalmente. Y lo más importante, es una persona empática, capaz de ponerse en el lugar del cliente y entender sus requerimientos y necesidades para brindar soluciones efectivas. Lo recomiendo a ojos cerrados. No se van a arrepentir."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">P</div>
+                            <div>
+                                <h4 class="font-bold text-primary">Paola Monti</h4>
+                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
+                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo muy atento a todo, es difícil confiar en una persona estando a distancia pero me entrego la seguridad en sus procesos, llevamos varios meses trabajando juntos y lo recomendaría siempre, consulta o inquietud que tuviese lo volvería a contactar."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">S</div>
+                            <div>
+                                <h4 class="font-bold text-primary">Sebastián Andrés</h4>
+                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
+                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Servicio 100% recomendable. El abogado Guillermo Hernandez ha demostrado compromiso y dedicación en nuestro caso en todo momento, evidenciando ser un gran profesional. Mi experiencia hasta el momento ha sido excelente."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">A</div>
+                            <div>
+                                <h4 class="font-bold text-primary">Alejandro Venegas</h4>
+                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
+                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Muy buen abogado, rápido y proactivo, muy dedicado y atento a mis necesidades, muy bueno."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">A</div>
+                            <div>
+                                <h4 class="font-bold text-primary">Alejandro Pérez</h4>
+                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 5 -->
+                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
+                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Don Guillermo me contactó rápidamente y aclaro mis dudas."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">R</div>
+                            <div>
+                                <h4 class="font-bold text-primary">Ricardo Muñoz</h4>
+                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 6 -->
+                    <div class="flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start bg-white p-8 shadow-sm relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group/card border-t-4 border-transparent hover:border-accent">
+                        <i class="fa-solid fa-quote-right text-4xl text-gray-100 absolute top-6 right-6 transition-transform duration-300 group-hover/card:scale-125"></i>
+                        <p class="text-gray-600 italic mb-6 relative z-10 text-sm">"Excelente abogado.. muy respeto.. muy empatizo.. mil gracias"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold font-serif shadow-md">F</div>
+                            <div>
+                                <h4 class="font-bold text-primary">Fabiana Cortés Venegas</h4>
+                                <p class="text-xs text-gray-400">Evaluación Verificada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Flecha Derecha -->
+                <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:text-accent hover:scale-110 transition-all duration-300 z-10 focus:outline-none opacity-90 hover:opacity-100 hidden sm:flex">
+                    <i class="fa-solid fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA & Footer -->
+    <footer id="contacto" class="bg-primary text-gray-300">
+        <!-- CTA Principal Footer -->
+        <div class="bg-primaryLight py-12 border-b border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-serif text-white font-bold mb-6">Confía tu caso a expertos en la materia</h2>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:contacto@ipsoabogados.cl" class="bg-transparent border border-accent text-accent hover:bg-accent hover:text-white py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
+                        Escríbenos Aquí
+                    </a>
+                    <a href="https://wa.me/56990848415" class="bg-accent text-white hover:bg-accentHover py-3 px-8 rounded-sm font-bold transition-colors uppercase tracking-wider">
+                        Agendar Consulta
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Footer -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Branding -->
+                <div>
+                    <div class="mb-6 flex flex-col items-start">
+                        <div class="text-3xl font-serif font-bold text-white leading-none">Ipso<span class="text-accent">Abogados</span></div>
+                        <div class="text-xs font-sans tracking-[0.2em] uppercase text-gray-400 mt-2">Estudio Jurídico</div>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                        Defensa y asesoría penal en delitos de alta gravedad y complejidad. Compromiso absoluto con tu libertad, dignidad y derechos constitucionales.
+                    </p>
+                </div>
+
+                <!-- Enlaces -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6 border-b border-gray-700 pb-2 inline-block">Navegación</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="hover:text-accent transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-accent"></i> Inicio</a></li>
+                        <li><a href="#servicios" class="hover:text-accent transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-accent"></i> Áreas de Práctica</a></li>
+                        <li><a href="#metodologia" class="hover:text-accent transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-accent"></i> Cómo Trabajamos</a></li>
+                        <li><a href="#nosotros" class="hover:text-accent transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-accent"></i> Testimonios</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6 border-b border-gray-700 pb-2 inline-block">Contacto Directo</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone text-accent mt-1"></i>
+                            <div>
+                                <span class="block text-white font-semibold">Urgencias Penales 24/7:</span>
+                                <a href="tel:+56990848415" class="hover:text-white">+56 9 9084 8415</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-envelope text-accent mt-1"></i>
+                            <div>
+                                <span class="block text-white font-semibold">Correo Electrónico:</span>
+                                <a href="mailto:contacto@ipsoabogados.cl" class="hover:text-white">contacto@ipsoabogados.cl</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-accent mt-1"></i>
+                            <div>
+                                <span class="block text-white font-semibold">Oficina Central:</span>
+                                <span>Compañía de Jesus, Santiago Centro, RM.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="bg-dark py-6 text-center text-sm border-t border-gray-800">
+            <p>&copy; 2026 IpsoAbogados. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/56990848415" target="_blank" aria-label="Chat en WhatsApp" 
+       class="whatsapp-btn fixed bottom-8 right-8 bg-[#25d366] text-white w-16 h-16 rounded-full flex justify-center items-center text-3xl z-[100]">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts de Animación y Navegación -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Lógica para el Slider de Testimonios
+        const track = document.getElementById('testimonialTrack');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+
+        if (track && prevBtn && nextBtn) {
+            // Avanzar hacia la derecha con bucle
+            nextBtn.addEventListener('click', () => {
+                const cardWidth = track.querySelector('div').offsetWidth + 24; // ancho de tarjeta + gap
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                
+                // Si llegó al final, deslizar de vuelta al inicio
+                if (track.scrollLeft >= maxScroll - 10) {
+                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            });
+
+            // Retroceder hacia la izquierda con bucle
+            prevBtn.addEventListener('click', () => {
+                const cardWidth = track.querySelector('div').offsetWidth + 24;
+                
+                // Si está en el inicio, deslizar hasta el final
+                if (track.scrollLeft <= 10) {
+                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                }
+            });
+
+            // Avance automático (Autoplay) cada 4.5 segundos
+            let autoPlayInterval = setInterval(() => {
+                nextBtn.click();
+            }, 4500);
+
+            // Pausar el slider si el usuario pone el mouse encima o lo toca en el celular
+            track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            track.addEventListener('touchstart', () => clearInterval(autoPlayInterval), {passive: true});
+            
+            // Reanudar el slider cuando el usuario quita el mouse
+            track.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    nextBtn.click();
+                }, 4500);
+            });
+        }
+
+        // Inicializar animaciones de Scroll (AOS)
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+        
+        // Efecto del menú al bajar (Header Shrink)
+        window.addEventListener('scroll', function() {
+            const headerNav = document.querySelector('header .flex.justify-between');
+            if (window.scrollY > 50) {
+                headerNav.classList.replace('h-20', 'h-16'); 
+            } else {
+                headerNav.classList.replace('h-16', 'h-20');
+            }
+        });
+    </script>
+</body>
+</html>
